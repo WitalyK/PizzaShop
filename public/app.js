@@ -3,10 +3,12 @@
 // function something() {
 // 		alert('Hello!'+ x);
 // 		x=x+1;
-// 	}
+// 	}              Глобальная переменная
 function something() {
-	window.localStorage.setItem('aaa', 555);
+	
 	var x = window.localStorage.getItem('aaa');
+	x = x*1+1;
+	window.localStorage.setItem('aaa', x);
 	alert(x);
-	// body...
+	
 }
