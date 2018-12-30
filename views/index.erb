@@ -1,21 +1,22 @@
 <h2>Welcome to PizzaShop</h2>
-<table>
-
+<br/>
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
-      One of three columns
+    <% @product.each do |p| %>
+    <div class="col-md-3">
+      <div>
+        <img src=<%= p.path_to_image %>>
+      </div>
+      <div>
+        Цена <%= p.price %>
+      </div>
+      <div>
+        Размер <%= p.size %>
+      </div>
     </div>
-    <div class="col-md-2">
-      <img src="/images/pepperoni.jpg">
-      Two Pizza
-    </div>
-    <div class="col-md-2">
-      One of three columns
-    </div>
+    <% end %>
   </div>
 </div>
-</table>
-
-
+<br/>
+<br/>
 <button class="btn btn-primary" onclick="something()">Click me</button>
