@@ -6,8 +6,13 @@ function addtocart(id) {
 	window.localStorage.setItem(key, x);
 }
 
-function something() {
-
+function enumber() {
+	sum = 0;
+	for(var i in localStorage)
+{
+    sum = sum + localStorage[i]);
+}
+alert(sum);
 //	var x = window.localStorage.getItem('aaa');
 //	x = x*1+1;
 //	window.localStorage.setItem('aaa', x);
