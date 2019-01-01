@@ -1,6 +1,5 @@
 <h2>Welcome to PizzaShop</h2>
 <br/>
-<div class="container">
   <div class="row">
     <% @product.each do |p| %>
     <div class="col-md-3">
@@ -19,10 +18,12 @@
       <div>
         Размер <%= p.size %>
       </div>
+      <div>
+        <button class="btn btn-sm btn-success" onclick="addtocart(<%= p.id %>)">Add to cart</button>
+      </div>
     </div>
     <% end %>
   </div>
-</div>
 <br/>
 <br/>
 <button class="btn btn-primary" onclick="something()">Click me</button>
