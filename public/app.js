@@ -7,14 +7,12 @@ function addtocart(id) {
 }
 
 function enumber() {
-	sum = 0;
-	for(var i in localStorage)
-{
-    sum = sum + localStorage[i]);
-}
-alert(sum);
-//	var x = window.localStorage.getItem('aaa');
-//	x = x*1+1;
-//	window.localStorage.setItem('aaa', x);
-//	alert(x);
+	var sum = 0;
+	var len=localStorage.length;
+	for(var i=0; i<len; i++) {
+	    var key = localStorage.key(i);
+	    var value = localStorage[key];
+	    sum = sum*1 + value*1;
+	}
+	alert(sum);
 }
