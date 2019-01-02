@@ -8,10 +8,10 @@ function addtocart(id) {
 
 function enumber() {
 	var sum = 0;
-	var len=localStorage.length;
+	var len=window.localStorage.length;
 	for(var i=0; i<len; i++) {
-	    var key = localStorage.key(i);
-	    var value = localStorage[key];
+	    var key = window.localStorage.key(i);
+	    var value = window.localStorage[key];
 	    sum = sum*1 + value*1;
 	}
 	alert(sum);
