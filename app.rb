@@ -24,9 +24,17 @@ get '/about' do
 	erb :about
 end
 
+get '/admin' do
+  @cc = Order.order('created_at DESC')
+  erb :admin
+end
+
 post '/cart' do
-	orders_input = params[:orders]
-	@items = parse_orders_input orders_input
+	@orders_input = params[:orders]
+	@items = parse_orders_input @orders_input
+	if @items.length == 0
+		return erb :cart_is_empty
+	end
 	@items.each do |item|
 		item[0] = Product.find(item[0]) #переопределяем ид объектом строкой
 	end
@@ -36,11 +44,12 @@ end
 
 post '/order' do
     c = Order.new params[:order]
-    if !c.save
+    if c.save
+    	erb  :order_placed
+    else
        	@error = c.errors.full_messages[0]
-    	return erb :order_placed
+      	return erb "Error"
     end
-  	erb  :order_placed     # "Your order has been placed"
 end
 
 def parse_orders_input orders_input

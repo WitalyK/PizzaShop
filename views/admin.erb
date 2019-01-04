@@ -1,0 +1,24 @@
+<h1>Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">Goods</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @cc.each do |item| %>
+    <tr>
+      <th scope="row"><%= item.name %></th>
+      <td><%= item.phone %></td>
+      <td><%= item.adress %></td>
+      <td><%= item.goods %></td>
+      <td><%= item.updated_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

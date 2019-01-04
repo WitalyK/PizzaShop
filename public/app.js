@@ -9,14 +9,7 @@ function addtocart(id) {
 }
 
 function enumber() {
-	var sum = 0;
-	var len=window.localStorage.length;
-	for(var i=0; i<len; i++) {
-	    var key = window.localStorage.key(i);
-	    var value = window.localStorage[key];
-	    sum = sum*1 + value*1;
-	}
-	return sum;
+	return line_storage(0);
 }
 
 function update_order_input() {
@@ -25,19 +18,30 @@ function update_order_input() {
 }
 
 function update_order_button() {
-		var text = 'Cart('+enumber()+')';
+		var text = ' ' + enumber();
 		$('#order_button').val(text);
 }
 
-function cart_get_orders() {
+function line_storage(priz) {
+	var sum = 0;
 	var order = '';
 	var len=window.localStorage.length;
 	for(var i=0; i<len; i++) {
 	    var key = window.localStorage.key(i);
 	    var value = window.localStorage[key];
-	    order = order + key + '=' + value + ',';
+    	sum = sum*1 + value*1;
+		order = order + key + '=' + value + ',';
 	}
-	return order;
+	if (priz == 0) {
+		return sum;	
+	} else {
+		return order;
+	}
+
+}
+
+function cart_get_orders() {
+	return line_storage(1);
 }
 
 function cancel_order() {
