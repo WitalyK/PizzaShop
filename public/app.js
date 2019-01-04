@@ -39,3 +39,14 @@ function cart_get_orders() {
 	}
 	return order;
 }
+
+function cancel_order() {
+	
+	window.localStorage.clear();
+	
+	update_order_input();
+	update_order_button();
+	$('#cart').text('Your cart is now empty')
+
+	return false;
+}

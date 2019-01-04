@@ -38,9 +38,9 @@ post '/order' do
     c = Order.new params[:order]
     if !c.save
        	@error = c.errors.full_messages[0]
-    	return erb :order
+    	return erb :order_placed
     end
-  	erb  "Your order has been recorded"
+  	erb  :order_placed     # "Your order has been placed"
 end
 
 def parse_orders_input orders_input
