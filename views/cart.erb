@@ -1,5 +1,12 @@
-<h2>Welcome to PizzaShop</h2>
+<!-- $(elem).hide();
+$(elem).show(); -->
+
+
+
+<h2>Your order</h2>
 <br/>
+
+<form action="/order" method="post">
   <div class="row">
     <% @product.each do |p| %>
     <div class="col-md-3">
@@ -18,24 +25,17 @@
       <div>
         Размер <%= p.size %>
       </div>
-      <div>
-        <button class="btn btn-sm btn-success" onclick="addtocart(<%= p.id %>)">Add to cart</button>
-      </div>
     </div>
     <% end %>
   </div>
 <br/>
 <br/>
-<button class="btn btn-primary" onclick="enumber()">Click me</button>
+	<input type="submit" class="btn btn-primary btn-lg" id="order_button_order"/>
+</form>
+
 
 <script type="text/javascript">
   $(function() {
-    $('#order_button').show();
-  });
-  $(function() {
-    update_order_input();
-  });
-  $(function() {
-    update_order_button();
+    $('#order_button').hide();
   });
 </script>
