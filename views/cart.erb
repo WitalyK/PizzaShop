@@ -7,35 +7,32 @@ $(elem).show(); -->
 <br/>
 
 <form action="/order" method="post">
-  <div class="row">
-    <% @product.each do |p| %>
-    <div class="col-md-3">
-      <div>
-        <%= p.title %>
-      </div>
-      <div>
-        <img src=<%= p.path_to_image %>>
-      </div>
-      <div>
-        <%= p.description %>
-      </div>
-      <div>
-        Цена <%= p.price %>
-      </div>
-      <div>
-        Размер <%= p.size %>
-      </div>
-    </div>
-    <% end %>
-  </div>
-<br/>
-<br/>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @items.each do |item| %>
+    <tr>
+      <th scope="row"><%= item[0].id %></th>
+      <td><%= item[0].title %></td>
+      <td><%= item[0].price %></td>
+      <td><%= item[1] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 	<input type="submit" class="btn btn-primary btn-lg" id="order_button_order"/>
 </form>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function() {
     $('#order_button').hide();
   });
-</script>
+</script> -->

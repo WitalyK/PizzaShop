@@ -37,7 +37,7 @@
 			    </ul>
 				<span class="navbar-text">
 	      			<form action="/cart" method="post">
-						<input type="hidden" id="order_num"/>
+						<input type="hidden" id="order_num" name="orders" />
 	      				<input type="submit" class="btn btn-primary btn-lg" id="order_button"/>
 	      			</form>
 	    		</span>
@@ -52,7 +52,13 @@
 			</div>
 
 	</div>
-
-
+	<script type="text/javascript">
+	  $(function() {
+	    update_order_input();
+	  });
+	  $(function() {
+	    update_order_button();
+	  });
+	</script>
   </body>
 </html>
