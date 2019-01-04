@@ -24,10 +24,6 @@ get '/about' do
 	erb :about
 end
 
-get '/cart' do
-	erb :cart
-end
-
 post '/cart' do
 	orders_input = params[:orders]
 	@items = parse_orders_input orders_input
@@ -39,9 +35,9 @@ post '/cart' do
 end
 
 post '/order' do
-    @c = Order.new params[:order]
-    if !@c.save
-       	@error = @c.errors.full_messages[0]
+    c = Order.new params[:order]
+    if !c.save
+       	@error = c.errors.full_messages[0]
     	return erb :order
     end
   	erb  "Your order has been recorded"
