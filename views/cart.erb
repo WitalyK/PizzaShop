@@ -19,6 +19,7 @@ $(elem).show(); -->
 	  <tbody>
 	  <% total_price = 0 %>
 	  <% total_quantity = 0 %>
+	  <% total_goods = '' %>
 	  <% @items.each do |item| %>
 	    <tr>
 	      <th scope="row"><%= item[0].id %></th>
@@ -28,6 +29,7 @@ $(elem).show(); -->
 	    </tr>
 	  <% total_price += item[0].price*item[1].to_i %>
 	  <% total_quantity += item[1].to_i %>
+	  <% total_goods += item[0].title + ' ' + item[1] + ',' %>
 	  <% end %>
 	    <tr>
 	      <th scope="row">Subtotal</th>
@@ -37,20 +39,20 @@ $(elem).show(); -->
 	    </tr>
 	  </tbody>
   </table>
-
+  <input type="hidden" name="order[goods]" value="<%= total_goods %>" />
   <div class="form-group">
   	<label>Name</label>
-  	<input type="text" name="order[name]" class="form-control" placeholder="Your name">
+  	<input type="text" name="order[name]" class="form-control" placeholder="Your name" value=<%= @c.name %>>
   </div>
 
   <div class="form-group">
   	<label>Phone</label>
-  	<input type="text" name="order[phone]" class="form-control" placeholder="Your phone">
+  	<input type="text" name="order[phone]" class="form-control" placeholder="Your phone" value=<%= @c.phone %>>
   </div>
 
   <div class="form-group">
   	<label>Delivery address</label>
-  	<input type="text" name="order[address]" class="form-control" placeholder="Delivery address">
+  	<input type="text" name="order[adress]" class="form-control" placeholder="Delivery address" value=<%= @c.adress %>>
   </div>
 
 	<input type="submit" class="btn btn-primary btn-lg" id="order_button_order"/>

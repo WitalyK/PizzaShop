@@ -9,6 +9,12 @@ set :database, "sqlite3:pizzashop.db" #создание бд
 class Product < ActiveRecord::Base #создание таблицы (сущности)
 end
 
+class Order < ActiveRecord::Base #создание таблицы (сущности)
+	validates :name, presence: true
+	validates :phone, presence: true
+	validates :adress, presence: true
+end
+
 get '/' do
 	@product = Product.all
 	erb :index
@@ -16,6 +22,10 @@ end
 
 get '/about' do
 	erb :about
+end
+
+get '/cart' do
+	erb :cart
 end
 
 post '/cart' do
@@ -26,6 +36,15 @@ post '/cart' do
 	end
 
   	erb  :cart # "Hello #{@orders.inspect}"
+end
+
+post '/order' do
+    @c = Order.new params[:order]
+    if !@c.save
+       	@error = @c.errors.full_messages[0]
+    	return erb :order
+    end
+  	erb  "Your order has been recorded"
 end
 
 def parse_orders_input orders_input
